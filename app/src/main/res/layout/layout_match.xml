@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>\<import type="android.view.View" />
+        <variable name="isLoading" type="boolean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_vertical_margin">
+
+
+        <TextView
+            android:id="@+id/matches_list_title"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name" />
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/card_vertical_width">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/match_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:visibility="@{isLoading? View.GONE : View.VISIBLE}"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:scaleX="0.50"
+                android:scaleY="0.50"
+                android:textColor="@color/colorAccent"
+                android:visibility="@{isLoading? View.VISIBLE : View.GONE}"/>
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+</layout>
+
+

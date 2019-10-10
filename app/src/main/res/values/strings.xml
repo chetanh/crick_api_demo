@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">CricketDemo</string>
+
+    <string name="live_match_title">Live matches</string>
+    <string name="upcoming_match_title">Upcoming matches</string>
+    <string name="recent_match_title">Recent matches</string>
+    <string name="old_match_title">Older matches</string>
+    <string name="click_more_detail_label">Click to get more details.</string>
+    <string name="match_details">Match Details</string>
+    <string name="match_schedule_label">Match is scheduled</string>
+    <string name="match_progress_label">Match is in progress.</string>
+    <string name="recent_match_label">Match won by</string>
+
+</resources>

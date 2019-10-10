@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="match"
+            type="com.android.demo.framework.models.Match" />
+
+        <variable
+            name="listener"
+            type="com.android.demo.ui.match_list.MatchRecyclerViewAdapter.MatchItemClickListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:onClick="@{ () -> listener.onMatchRecyclerViewItemClick(match)}"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="@dimen/card_horizontal_width"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/card_padding">
+
+            <TextView
+                android:id="@+id/team1"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/card_padding"
+                android:text="@{match.team1}" />
+
+            <TextView
+                android:id="@+id/team2"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/card_padding"
+                android:text="@{match.team2}" />
+
+            <TextView
+                android:id="@+id/match_stat"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/card_padding"
+                android:gravity="center"
+                android:text="@{match.stat}" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
+

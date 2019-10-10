@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="oldMatch"
+            type="com.android.demo.framework.models.OldMatch" />
+
+        <variable
+            name="oldListener"
+            type="com.android.demo.ui.match_list.OldMatchRecyclerViewAdapter.OldMatchItemClickListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:onClick="@{ () -> oldListener.onOldMatchRecyclerViewItemClick(oldMatch)}"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="@dimen/card_horizontal_width"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/card_padding">
+
+            <TextView
+                android:id="@+id/team1"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/card_padding"
+                android:text="@{oldMatch.title.substring(0, oldMatch.title.indexOf(` v `))}" />
+
+            <TextView
+                android:id="@+id/team2"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/card_padding"
+                android:text="@{oldMatch.title.substring(oldMatch.title.indexOf(` v `)+ 3)}" />
+
+            <TextView
+                android:id="@+id/match_stat"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/card_padding"
+                android:gravity="center"
+                android:text="@string/click_more_detail_label" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
+

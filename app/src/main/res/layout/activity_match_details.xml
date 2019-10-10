@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="matchDetails"
+            type="com.android.demo.framework.models.MatchDetail" />
+
+        <variable name="isLoading" type="boolean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/app_bar_landing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:scaleX="0.20"
+            android:scaleY="0.20"
+            android:textColor="@color/colorAccent"
+            android:visibility="@{isLoading? View.VISIBLE : View.GONE}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="@{isLoading? View.GONE : View.VISIBLE}"
+            android:gravity="center">
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/nav_header_vertical_spacing"
+                android:gravity="center"
+                android:text="@{matchDetails.team1 + ` vs ` + matchDetails.team2 }" />
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/nav_header_vertical_spacing"
+                android:maxLines="10"
+                android:text="@{matchDetails.score.substring(0, matchDetails.score.indexOf(` v `)) + `\n` + matchDetails.score.substring(matchDetails.score.indexOf(` v `) + 3)}"
+                android:visibility="@{matchDetails.score == null ? View.GONE : View.VISIBLE}" />
+
+            <TextView
+                android:id="@+id/match_stat"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:gravity="center"
+                android:text="@{matchDetails.score == null ? `Match yet to start.` : matchDetails.stat}" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>
+
+
